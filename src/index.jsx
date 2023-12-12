@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import MainView from "./components/main-view/main-view";
-import { MovieView } from "./components/movie-view/movie-view";
+import MovieView from "./components/movie-view/movie-view";
 import './index.scss'; //import statement that you need to bundle './index.scss'
 
 //main component (will eventually use all the others)
