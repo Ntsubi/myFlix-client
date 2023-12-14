@@ -51,7 +51,7 @@ const MainView = () => {
         <LoginView onLoggedIn={(user, token) => {
           setUser(user);
           setToken(token);
-        }} />;
+        }} />
         or
         <SignupView />
       </>
