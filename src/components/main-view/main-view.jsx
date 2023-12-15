@@ -21,6 +21,11 @@ const MainView = () => {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((response) => response.json())
+      .catch((err) => {
+        console.error(err);
+        res.send(401).send('Authentication failed. Please log in again.');
+      })
+      .then((response) => response.json())
       .then((data) => {
         const moviesFromApi = data.map((movie) => {
           return {
