@@ -48,8 +48,8 @@ const LoginView = ({ onLoggedIn }) => {
     <Container>
       <Row>
         <Col>
-          <Card>
-            <CardGroup>
+          <CardGroup>
+            <Card>
               <Card.Title>Login</Card.Title>
               <Form onSubmit={handleSubmit} >
                 <Form.Group controlId="formUsername">
@@ -63,8 +63,8 @@ const LoginView = ({ onLoggedIn }) => {
                 </Form.Group>
                 <Button variant="primary" type="submit">Submit</Button>
               </Form>
-            </CardGroup>
-          </Card>
+            </Card>
+          </CardGroup>
         </Col>
       </Row>
     </Container>
