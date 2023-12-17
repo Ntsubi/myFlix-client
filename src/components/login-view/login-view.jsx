@@ -49,20 +49,22 @@ const LoginView = ({ onLoggedIn }) => {
       <Row>
         <Col>
           <CardGroup>
-            <Card>
-              <Card.Title>Login</Card.Title>
-              <Form onSubmit={handleSubmit} >
-                <Form.Group controlId="formUsername">
-                  <Form.Label>Username:</Form.Label>
-                  <Form.Control type="text" value={username} minLength="5" onChange={(e) => setUsername(e.target.value)} placeholder="Username" required />
-                </Form.Group>
+            <Card style={{ marginTop: 100, marginBottom: 50 }} >
+              <Card.Body>
+                <Card.Title style={{ textAlign: "center" }} >Login</Card.Title>
+                <Form onSubmit={handleSubmit} >
+                  <Form.Group controlId="formUsername">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control type="text" value={username} minLength="5" onChange={(e) => setUsername(e.target.value)} placeholder="Username" required />
+                  </Form.Group>
 
-                <Form.Group controlId="formPassword">
-                  <Form.Label>Password:</Form.Label>
-                  <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-                </Form.Group>
-                <Button variant="primary" type="submit">Submit</Button>
-              </Form>
+                  <Form.Group controlId="formPassword">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
+                  </Form.Group>
+                  <Button variant="primary" type="submit">Submit</Button>
+                </Form>
+              </Card.Body>
             </Card>
           </CardGroup>
         </Col>
