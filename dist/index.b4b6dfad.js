@@ -27394,7 +27394,7 @@ const MainView = ()=>{
                     columnNumber: 11
                 }, undefined)
             ]
-        }, void 0, true) : selectedBook ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieViewDefault.default), {
+        }, void 0, true) : selectedMovie ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieViewDefault.default), {
             movie: selectedMovie,
             onBackClick: ()=>setSelectedMovie(null)
         }, void 0, false, {

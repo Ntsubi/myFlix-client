@@ -61,7 +61,7 @@ const MainView = () => {
           or
           <SignupView />
         </>
-      ) : selectedBook ? (
+      ) : selectedMovie ? (
         <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
       ) : movies.length === 0 ? (
         <div>The list is empty</div>
