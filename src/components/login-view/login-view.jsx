@@ -2,6 +2,11 @@ import React from "react";
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
+import CardGroup from "react-bootstrap/CardGroup";
 
 const LoginView = ({ onLoggedIn }) => {
 
@@ -40,18 +45,29 @@ const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} >
-      <Form.Group controlId="formUsername">
-        <Form.Label>Username:</Form.Label>
-        <Form.Control type="text" value={username} minLength="5" onChange={(e) => setUsername(e.target.value)} placeholder="Username" required />
-      </Form.Group>
+    <Container>
+      <Row>
+        <Col>
+          <Card>
+            <CardGroup>
+              <Card.Title>Login</Card.Title>
+              <Form onSubmit={handleSubmit} >
+                <Form.Group controlId="formUsername">
+                  <Form.Label>Username:</Form.Label>
+                  <Form.Control type="text" value={username} minLength="5" onChange={(e) => setUsername(e.target.value)} placeholder="Username" required />
+                </Form.Group>
 
-      <Form.Group controlId="formPassword">
-        <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-      </Form.Group>
-      <Button variant="primary" type="submit">Submit</Button>
-    </Form>
+                <Form.Group controlId="formPassword">
+                  <Form.Label>Password:</Form.Label>
+                  <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
+                </Form.Group>
+                <Button variant="primary" type="submit">Submit</Button>
+              </Form>
+            </CardGroup>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
