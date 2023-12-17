@@ -5,8 +5,8 @@ import LoginView from "../login-view/login-view";
 import SignupView from "../signup-view/signup-view";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import NavBar from "../nav-bar/nav-bar";
 
 const MainView = () => {
 
@@ -58,6 +58,7 @@ const MainView = () => {
 
   return (
     <Container>
+      <NavBar setUser={setUser} setToken={setToken} />
       <Row className="justify-content-md-center">
         {!user ? (
           <Col md={5}>
@@ -67,7 +68,7 @@ const MainView = () => {
           </Col>
         ) : selectedMovie ? (
           <Col md={8} >
-            <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} style={{ border: "1px solid green" }} />
+            <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
           </Col>
         ) : movies.length === 0 ? (
           <div>The list is empty</div>
@@ -85,7 +86,6 @@ const MainView = () => {
             ))}
           </>
         )}
-        <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
       </Row>
     </Container>
   );
