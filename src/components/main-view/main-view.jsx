@@ -4,6 +4,8 @@ import MovieView from "../movie-view/movie-view";
 import LoginView from "../login-view/login-view";
 import SignupView from "../signup-view/signup-view";
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 const MainView = () => {
 
@@ -54,15 +56,17 @@ const MainView = () => {
   }, []);
 
   return (
-    <Row>
+    <Row className="justify-content-md-center">
       {!user ? (
-        <>
+        <Col md={5}>
           <LoginView onLoggedIn={(user) => setUser(user)} />
           or
           <SignupView />
-        </>
+        </Col>
       ) : selectedMovie ? (
-        <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+        <Col md={8} >
+          <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} style={{ border: "1px solid green" }} />
+        </Col>
       ) : movies.length === 0 ? (
         <div>The list is empty</div>
       ) : (
@@ -78,6 +82,7 @@ const MainView = () => {
           ))}
         </>
       )}
+      <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
     </Row>
   );
 };
