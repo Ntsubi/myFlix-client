@@ -48,7 +48,7 @@ const LoginView = ({ onLoggedIn }) => {
 
       <Form.Group controlId="formPassword">
         <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
       </Form.Group>
       <Button variant="primary" type="submit">Submit</Button>
     </Form>
