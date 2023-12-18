@@ -1,7 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
+import CardGroup from "react-bootstrap/CardGroup";
 
 const SignupView = () => {
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -37,22 +45,41 @@ const SignupView = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Username:
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} minLength="5" required />
-      </label>
-      <label>Password:
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-      </label>
-      <label>
-        Email:
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-      </label>
-      <label>Birthday:
-        <input type="date" value={birthday} onChange={(e) => setBirthday(e.target.value)} />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+    <Container>
+      <Row>
+        <Col>
+          <CardGroup>
+            <Card style={{ marginTop: 100, marginBottom: 50 }} >
+              <Card.Body>
+                <Card.Title style={{ textAlign: "center" }} >Create Account</Card.Title>
+                <Form onSubmit={handleSubmit}>
+                  <Form.Group controlId="formUsername">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control type="text" value={username} onChange={(e) => setUsername(e.target.value)} minLength="5" placeholder="Username" required />
+                  </Form.Group>
+
+                  <Form.Group controlId="formPassword">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
+                  </Form.Group>
+
+                  <Form.Group controlId="formEmail">
+                    <Form.Label>Email:</Form.Label>
+                    <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
+                  </Form.Group>
+
+                  <Form.Group controlId="formBirthday">
+                    <Form.Label>Birthday:</Form.Label>
+                    <Form.Control type="date" value={birthday} onChange={(e) => setBirthday(e.target.value)} placeholder="Birthday" />
+                  </Form.Group>
+                  <Button variant="primary" type="submit">Submit</Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          </CardGroup>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

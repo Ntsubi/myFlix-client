@@ -1,5 +1,12 @@
 import React from "react";
 import { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
+import CardGroup from "react-bootstrap/CardGroup";
 
 const LoginView = ({ onLoggedIn }) => {
 
@@ -38,16 +45,31 @@ const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} >
-      <label>Username:
-        <input type="text" value={username} minLength="5" onChange={(e) => setUsername(e.target.value)} required />
-      </label>
+    <Container>
+      <Row>
+        <Col>
+          <CardGroup>
+            <Card style={{ marginTop: 100, marginBottom: 50 }} >
+              <Card.Body>
+                <Card.Title style={{ textAlign: "center" }} >Login</Card.Title>
+                <Form onSubmit={handleSubmit} >
+                  <Form.Group controlId="formUsername">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control type="text" value={username} minLength="5" onChange={(e) => setUsername(e.target.value)} placeholder="Username" required />
+                  </Form.Group>
 
-      <label>Password:
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+                  <Form.Group controlId="formPassword">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
+                  </Form.Group>
+                  <Button variant="primary" type="submit">Submit</Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          </CardGroup>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
