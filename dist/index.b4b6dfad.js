@@ -27465,49 +27465,6 @@ const MainView = ()=>{
 };
 _s(MainView, "hFDxRpIbGxP6+QKMAcm8hX/Ql7A=");
 _c = MainView;
-//   if (!user) {
-//     return (
-//       <>
-//         <LoginView onLoggedIn={(user, token) => {
-//           setUser(user);
-//           setToken(token);
-//         }} />
-//         or
-//         <SignupView />
-//       </>
-//     );
-//   }
-//   if (selectedMovie) {
-//     return (
-//       <MovieView
-//         movie={selectedMovie}
-//         onBackClick={() => setSelectedMovie(null)}
-//       />
-//     );
-//   }
-//   if (movies.length === 0) {
-//     return <div>This list is empty</div>;
-//   } else {
-//     return (
-//       <>
-//         <div>
-//           {movies.map((movie) => {
-//             return (
-//               <MovieCard
-//                 key={movie._id}
-//                 movie={movie}
-//                 onMovieClick={(newSelectedMovie) => {
-//                   setSelectedMovie(newSelectedMovie);
-//                 }}
-//               />
-//             );
-//           })}
-//         </div>
-//         <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
-//       </>
-//     );
-//   }
-// };
 exports.default = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
