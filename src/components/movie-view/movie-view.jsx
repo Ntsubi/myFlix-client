@@ -3,11 +3,15 @@ import Button from "react-bootstrap/Button";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
-const MovieView = ({ movie }) => {
+const MovieView = ({ movies }) => {
+
+  const { movieID } = useParams();
+  const movie = movies.find((m) => m.id === movieID);
+
   return (
     <div>
       <div>
-        <img src={movie.ImageURL} />
+        <img src={movie.ImageURL} className="W-50" />
       </div>
       <div>
         <span>Title: </span>
