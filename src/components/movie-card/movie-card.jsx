@@ -11,8 +11,9 @@ const MovieCard = ({ movie }) => {
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
         <Card.Title>{movie.Genre.Name}</Card.Title>
-        <Link to={`/movies/${encodeURIComponent(movie._id)}`}></Link>
-        <Button variant="primary" size="sm">Open</Button>
+        <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+          <Button variant="primary" size="sm">Open</Button>
+        </Link>
       </Card.Body>
     </Card>
   );
