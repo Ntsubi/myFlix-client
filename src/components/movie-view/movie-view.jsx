@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
-const MovieView = ({ movie, onBackClick }) => {
+const MovieView = ({ movie }) => {
   return (
     <div>
       <div>
@@ -41,7 +41,7 @@ const MovieView = ({ movie, onBackClick }) => {
         <span>Featured: </span>
         <span>{movie.Featured ? "Yes" : "No"}</span>
       </div>
-      <Button variant="primary" onClick={onBackClick}>Back</Button>
+      <Button variant="primary" >Back</Button>
     </div>
   );
 };
