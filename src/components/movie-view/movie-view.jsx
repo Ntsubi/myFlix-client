@@ -41,7 +41,9 @@ const MovieView = ({ movie }) => {
         <span>Featured: </span>
         <span>{movie.Featured ? "Yes" : "No"}</span>
       </div>
-      <Button variant="primary" >Back</Button>
+      <Link to={`/`}>
+        <Button variant="primary">Back</Button>
+      </Link>
     </div>
   );
 };
@@ -65,7 +67,6 @@ MovieView.propTypes = {
     ReleaseYear: PropTypes.number,
     Featured: PropTypes.bool
   }).isRequired,
-  onBackClick: PropTypes.func.isRequired
 };
 
 export default MovieView;
