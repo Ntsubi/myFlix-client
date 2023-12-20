@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Button";
 import Button from "react-bootstrap/Button";
 
-const ProfileView = () => {
+const ProfileView = ({ user, token, setUser, movie }) => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
