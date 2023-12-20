@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import NavBar from "../nav-bar/nav-bar";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import ProfileView from "../profile-view/profile-view";
 
 const MainView = () => {
 
@@ -121,6 +122,21 @@ const MainView = () => {
                     ))}
                   </>
                 )}
+              </>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <Col md={5}>
+                    <ProfileView />
+                  </Col>
+                )
+                }
               </>
             }
           />
