@@ -37659,7 +37659,7 @@ const NavBar = ({ user, onLoggedOut })=>{
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
                                         as: (0, _reactRouterDom.Link),
-                                        to: "/",
+                                        to: "/profile",
                                         children: "Profile"
                                     }, void 0, false, {
                                         fileName: "src/components/nav-bar/nav-bar.jsx",

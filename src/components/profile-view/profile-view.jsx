@@ -62,8 +62,30 @@ const ProfileView = ({ user, token, setUser, movie }) => {
       })
   };
 
+  return (
+    <Form onSubmit={handleUpdate}>
+      <Form.Group>
+        <Form.Label>Username:</Form.Label>
+        <Form.Control type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Password:</Form.Label>
+        <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Email:</Form.Label>
+        <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Birthday:</Form.Label>
+        <Form.Control type="date" value={birthday} onChange={(e) => setBirthday(e.target.value)} placeholder="Birthday" />
+      </Form.Group>
+    </Form>
+  );
 
 };
+
+export default ProfileView;
 
 
 
