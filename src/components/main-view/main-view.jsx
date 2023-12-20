@@ -56,6 +56,11 @@ const MainView = () => {
       });
   }, []);
 
+  const updatedUser = user => {
+    setUser(user)
+    localStorage.setItem("user", JSON.stringify(user));
+  }
+
   return (
     <BrowserRouter>
       <NavBar user={user} onLoggedOut={() => { setUser(null); setToken(null); localStorage.clear(); }} />
@@ -133,7 +138,11 @@ const MainView = () => {
                   <Navigate to="/login" replace />
                 ) : (
                   <Col md={5}>
-                    <ProfileView />
+                    <ProfileView
+                      user={user}
+                      token={token}
+                      setUser={updatedUser}
+                    />
                   </Col>
                 )
                 }

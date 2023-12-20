@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 
-const ProfileView = ({ user, token, setUser, movie }) => {
+const ProfileView = ({ user, token, setUser, movies }) => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -17,6 +17,7 @@ const ProfileView = ({ user, token, setUser, movie }) => {
   const handleUpdate = (event) => {
     event.preventDefault();
 
+    let favoriteMovies = movies.filter(m => user.favoriteMovies.includes(m._id));
 
     const data = {
       Username: username,
@@ -25,11 +26,12 @@ const ProfileView = ({ user, token, setUser, movie }) => {
       Birthday: birthday
     }
     //Update user info
+    console.log("Token", token);
     fetch(`https://render-movie-api.onrender.com/users/${user.Username}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        headers: { Authorization: `Bearer ${token}` }
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data)
     })
