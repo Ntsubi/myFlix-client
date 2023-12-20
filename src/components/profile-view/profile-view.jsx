@@ -3,8 +3,9 @@ import MovieCard from "../movie-card/movie-card";
 import { Link } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import Card from "react-bootstrap/Button";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 const ProfileView = ({ user, token, setUser, movie }) => {
 
@@ -63,26 +64,31 @@ const ProfileView = ({ user, token, setUser, movie }) => {
   };
 
   return (
-
-    <Form onSubmit={handleUpdate}>
-      <Form.Group>
-        <Form.Label>Name:</Form.Label>
-        <Form.Control type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Name" />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Email:</Form.Label>
-        <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Birthday:</Form.Label>
-        <Form.Control type="date" value={birthday} onChange={(e) => setBirthday(e.target.value)} placeholder="Birthday" />
-      </Form.Group>
-      <Button variant="primary" type="submit" onClick={handleUpdate} >Update</Button>
-    </Form>
+    <Container>
+      <Row>
+        <Col>
+          <Form onSubmit={handleUpdate}>
+            <Form.Group>
+              <Form.Label>Name:</Form.Label>
+              <Form.Control type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Name" />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Password:</Form.Label>
+              <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Email:</Form.Label>
+              <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Birthday:</Form.Label>
+              <Form.Control type="date" value={birthday} onChange={(e) => setBirthday(e.target.value)} placeholder="Birthday" />
+            </Form.Group>
+            <Button variant="primary" type="submit" onClick={handleUpdate} >Update</Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
 
   );
 };
