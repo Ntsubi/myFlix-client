@@ -44,6 +44,23 @@ const ProfileView = () => {
       })
   };
 
+  const handleDelete = () => {
+
+    fetch(`https://render-movie-api.onrender.com/users/${user.username}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        headers: { Authorization: `Bearer ${token}` }
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert('Your profile was successfully deleted');
+          setUser(null);
+        }
+      })
+  };
 
 
 };
