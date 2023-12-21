@@ -41668,7 +41668,7 @@ const ProfileView = ({ user, token, setUser, movies })=>{
     const [birthday, setBirthday] = (0, _react.useState)("");
     const handleUpdate = (event)=>{
         event.preventDefault();
-        let favoriteMovies = movies.filter((m)=>user.favoriteMovies.includes(m._id));
+        // let favoriteMovies = movies.filter(m => user.favoriteMovies.includes(m._id));
         const data1 = {
             Username: username,
             Password: password,
@@ -41685,10 +41685,14 @@ const ProfileView = ({ user, token, setUser, movies })=>{
             },
             body: JSON.stringify(data1)
         }).then((response)=>{
-            if (response.ok) alert("Profile successfully updated");
-            else alert("Update failed");
-        }).catch((err)=>{
+            if (response.ok) {
+                alert("Profile successfully updated");
+                window.location.reload();
+            } else alert("Update failed");
+            return response.json();
+        }).then((_)=>{}).catch((err)=>{
             console.error(err);
+            alert("Update failed");
         });
     };
     const handleDelete = ()=>{
@@ -41696,9 +41700,7 @@ const ProfileView = ({ user, token, setUser, movies })=>{
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
+                Authorization: `Bearer ${token}`
             },
             body: JSON.stringify(data)
         }).then((response)=>{
@@ -41706,6 +41708,10 @@ const ProfileView = ({ user, token, setUser, movies })=>{
                 alert("Your profile was successfully deleted");
                 setUser(null);
             }
+            return response.json();
+        }).then((_)=>{}).catch((err)=>{
+            console.error(err);
+            alert("There was a problem, your account could not be deleted");
         });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
@@ -41720,7 +41726,7 @@ const ProfileView = ({ user, token, setUser, movies })=>{
                                     children: "Name:"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 74,
+                                    lineNumber: 84,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -41730,13 +41736,13 @@ const ProfileView = ({ user, token, setUser, movies })=>{
                                     placeholder: "Name"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 75,
+                                    lineNumber: 85,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 73,
+                            lineNumber: 83,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -41745,7 +41751,7 @@ const ProfileView = ({ user, token, setUser, movies })=>{
                                     children: "Password:"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 78,
+                                    lineNumber: 88,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -41755,13 +41761,13 @@ const ProfileView = ({ user, token, setUser, movies })=>{
                                     placeholder: "Password"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 79,
+                                    lineNumber: 89,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 77,
+                            lineNumber: 87,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -41770,7 +41776,7 @@ const ProfileView = ({ user, token, setUser, movies })=>{
                                     children: "Email:"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 82,
+                                    lineNumber: 92,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -41780,13 +41786,13 @@ const ProfileView = ({ user, token, setUser, movies })=>{
                                     placeholder: "Email"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 83,
+                                    lineNumber: 93,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 81,
+                            lineNumber: 91,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -41795,7 +41801,7 @@ const ProfileView = ({ user, token, setUser, movies })=>{
                                     children: "Birthday:"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 86,
+                                    lineNumber: 96,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -41805,13 +41811,13 @@ const ProfileView = ({ user, token, setUser, movies })=>{
                                     placeholder: "Birthday"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 87,
+                                    lineNumber: 97,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 85,
+                            lineNumber: 95,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -41821,28 +41827,28 @@ const ProfileView = ({ user, token, setUser, movies })=>{
                             children: "Update"
                         }, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 89,
+                            lineNumber: 99,
                             columnNumber: 13
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 72,
+                    lineNumber: 82,
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 71,
+                lineNumber: 81,
                 columnNumber: 9
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 70,
+            lineNumber: 80,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/profile-view/profile-view.jsx",
-        lineNumber: 69,
+        lineNumber: 79,
         columnNumber: 5
     }, undefined);
 };

@@ -17,7 +17,7 @@ const ProfileView = ({ user, token, setUser, movies }) => {
   const handleUpdate = (event) => {
     event.preventDefault();
 
-    let favoriteMovies = movies.filter(m => user.favoriteMovies.includes(m._id));
+    // let favoriteMovies = movies.filter(m => user.favoriteMovies.includes(m._id));
 
     const data = {
       Username: username,
@@ -38,12 +38,16 @@ const ProfileView = ({ user, token, setUser, movies }) => {
       .then((response) => {
         if (response.ok) {
           alert('Profile successfully updated');
+          window.location.reload();
         } else {
           alert('Update failed')
         }
+        return response.json();
       })
+      .then((_) => { })
       .catch((err) => {
         console.error(err);
+        alert('Update failed')
       })
   };
 
@@ -53,7 +57,7 @@ const ProfileView = ({ user, token, setUser, movies }) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        headers: { Authorization: `Bearer ${token}` }
+        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify(data)
     })
@@ -62,6 +66,12 @@ const ProfileView = ({ user, token, setUser, movies }) => {
           alert('Your profile was successfully deleted');
           setUser(null);
         }
+        return response.json();
+      })
+      .then((_) => { })
+      .catch((err) => {
+        console.error(err);
+        alert('There was a problem, your account could not be deleted')
       })
   };
 
