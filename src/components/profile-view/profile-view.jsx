@@ -37,7 +37,7 @@ const ProfileView = ({ user, token, setUser, movies }) => {
     })
       .then((response) => {
         if (response.ok) {
-          alert('Profile successfully updated');
+          alert('Your profile was successfully updated');
           window.location.reload();
         } else {
           alert('Update failed')
@@ -66,12 +66,10 @@ const ProfileView = ({ user, token, setUser, movies }) => {
           alert('Your profile was successfully deleted');
           setUser(null);
         }
-        return response.json();
       })
-      .then((_) => { })
       .catch((err) => {
         console.error(err);
-        alert('There was a problem, your account could not be deleted')
+        alert('There was a problem, your account could not be deleted');
       })
   };
 
