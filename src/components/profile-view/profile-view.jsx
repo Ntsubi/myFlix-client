@@ -94,7 +94,8 @@ const ProfileView = ({ user, token, setUser, movies }) => {
               <Form.Label>Birthday:</Form.Label>
               <Form.Control type="date" value={birthday} onChange={(e) => setBirthday(e.target.value)} placeholder="Birthday" />
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={handleUpdate} >Update</Button>
+            <Button variant="primary" type="submit" onClick={handleUpdate}>Update</Button>
+            <Button variant="danger" type="submit" onClick={handleDelete}>Delete</Button>
           </Form>
         </Col>
       </Row>
