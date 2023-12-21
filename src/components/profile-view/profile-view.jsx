@@ -59,7 +59,6 @@ const ProfileView = ({ user, token, setUser, movies }) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`
       },
-      body: JSON.stringify(data)
     })
       .then((response) => {
         if (response.ok) {
