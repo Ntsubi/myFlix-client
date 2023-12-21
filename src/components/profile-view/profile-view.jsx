@@ -38,7 +38,6 @@ const ProfileView = ({ user, token, setUser, movies }) => {
       .then((response) => {
         if (response.ok) {
           alert('Your profile was successfully updated');
-          window.location.reload();
         } else {
           alert('Update failed')
         }
