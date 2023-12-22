@@ -142,6 +142,7 @@ const MainView = () => {
                       user={user}
                       token={token}
                       setUser={updatedUser}
+                      movies={movies}
                     />
                   </Col>
                 )
