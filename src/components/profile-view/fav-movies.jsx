@@ -5,10 +5,11 @@ const FavoriteMovies = ({ favoriteMovies }) => {
 
   return (
     <>
-      <h4>Favorites</h4>
+      <h5>Favorites</h5>
       {
         favoriteMovies.map(movie => {
-          return <MovieCard movie={movie} />
+          return <MovieCard movie={movie} key={movie._id} />
+
         })
       }
     </>
