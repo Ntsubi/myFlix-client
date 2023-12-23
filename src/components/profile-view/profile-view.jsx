@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import MovieCard from "../movie-card/movie-card";
 import { Link } from "react-router-dom";
 import Col from "react-bootstrap/Col";
@@ -6,18 +6,27 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import FavoriteMovies from "./fav-movies";
+import moment from "moment/moment";
 
 const ProfileView = ({ user, token, setUser, movies }) => {
-
-  const [username, setUsername] = useState("");
+  console.log(user, movies)
+  const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [birthday, setBirthday] = useState("");
+  const [email, setEmail] = useState(user.Email);
+  const [birthday, setBirthday] = useState(user.Birthday);
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
+
+  useEffect(() => {
+    console.log(movies)
+    if (movies) {
+      setFavoriteMovies(movies.filter(m => user.FavoriteMovies.includes(m._id)));
+      console.log("FAVVVV", favoriteMovies, movies)
+    }
+  }, [movies])
 
   const handleUpdate = (event) => {
     event.preventDefault();
-
-    // let favoriteMovies = movies.filter(m => user.favoriteMovies.includes(m._id));
 
     const data = {
       Username: username,
@@ -82,7 +91,7 @@ const ProfileView = ({ user, token, setUser, movies }) => {
             </Form.Group>
             <Form.Group>
               <Form.Label>Password:</Form.Label>
-              <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+              <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required={true} />
             </Form.Group>
             <Form.Group>
               <Form.Label>Email:</Form.Label>
@@ -90,13 +99,18 @@ const ProfileView = ({ user, token, setUser, movies }) => {
             </Form.Group>
             <Form.Group>
               <Form.Label>Birthday:</Form.Label>
-              <Form.Control type="date" value={birthday} onChange={(e) => setBirthday(e.target.value)} placeholder="Birthday" />
+              <Form.Control type="date" value={moment(birthday).format("yyyy-MM-DD")} onChange={(e) => setBirthday(e.target.value)} placeholder="Birthday" />
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={handleUpdate}>Update</Button>
-            <Button variant="danger" type="submit" onClick={handleDelete}>Delete</Button>
+            <Button variant="primary" type="submit">Update</Button>
+            <Button variant="danger" type="button" onClick={handleDelete}>Delete</Button>
           </Form>
         </Col>
       </Row>
+      {favoriteMovies.length > 0 &&
+        <Row>
+          <FavoriteMovies favoriteMovies={favoriteMovies} />
+        </Row>
+      }
     </Container>
 
   );
