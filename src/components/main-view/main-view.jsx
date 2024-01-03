@@ -12,7 +12,7 @@ import ProfileView from "../profile-view/profile-view";
 const MainView = () => {
 
   const storedUser = JSON.parse(localStorage.getItem("user"));
-  const storedToken = JSON.parse(localStorage.getItem("token"));
+  const storedToken = localStorage.getItem('token');
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
@@ -26,10 +26,6 @@ const MainView = () => {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((response) => {
-        if (!response.ok) {
-          console.log('Token is invalid or expired');
-          res.status(401).send('Authentication failed. Please log in again.');
-        }
         return response.json();
       })
       .then((data) => {
@@ -53,8 +49,12 @@ const MainView = () => {
           };
         });
         setMovies(moviesFromApi);
+      })
+      .catch((err) => {
+        console.error(err);
       });
-  }, []);
+  }, [])
+
 
   const updatedUser = user => {
     setUser(user)
@@ -122,7 +122,7 @@ const MainView = () => {
                   <>
                     {movies.map((movie) => (
                       <Col className="mb-4" key={movie._id} md={3}>
-                        <MovieCard movie={movie} />
+                        <MovieCard movie={movie} setUser={setUser} />
                       </Col>
                     ))}
                   </>
