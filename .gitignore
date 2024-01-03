@@ -1,6 +1,4 @@
 node_modules
 .cache
 .parcel-cache
-index.b4b6dfad.js
-index.b4b6dfad.js.map
-index.b4b6dfad.js.css
+dist/*
