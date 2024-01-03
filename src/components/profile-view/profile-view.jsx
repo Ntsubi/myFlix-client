@@ -21,7 +21,6 @@ const ProfileView = ({ user, token, setUser, movies }) => {
     console.log(movies)
     if (movies) {
       setFavoriteMovies(movies.filter(m => user.FavoriteMovies.includes(m._id)));
-      console.log("FAVVVV", favoriteMovies, movies)
     }
   }, [movies])
 
@@ -108,7 +107,7 @@ const ProfileView = ({ user, token, setUser, movies }) => {
       </Row>
       {favoriteMovies.length > 0 &&
         <Row>
-          <FavoriteMovies favoriteMovies={favoriteMovies} />
+          <FavoriteMovies favoriteMovies={favoriteMovies} setUser={setUser} />
         </Row>
       }
     </Container>
