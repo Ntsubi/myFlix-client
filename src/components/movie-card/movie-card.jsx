@@ -4,11 +4,11 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import FavIcon from '../fav-icon/fav-icon';
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, setUser }) => {
   return (
     <Card>
       <Card.Img variant="top" src={movie.ImageURL} />
-      <FavIcon MovieID={movie._id} style={{ marginTop: "10px", float: "right" }} />
+      <FavIcon MovieID={movie._id} setUser={setUser} style={{ marginTop: "10px", float: "right" }} />
       <Link to={'/'} />
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
