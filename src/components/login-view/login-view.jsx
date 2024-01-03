@@ -32,7 +32,7 @@ const LoginView = ({ onLoggedIn }) => {
         console.log('Login response: ', data); //NB** Remove this before deploying!
         if (data.user) {
           localStorage.setItem("user", JSON.stringify(data.user));
-          localStorage.setItem("token", JSON.stringify(data.token));
+          localStorage.setItem('token', data.token);
           onLoggedIn(data.user, data.token);
         } else {
           alert('No such user');
