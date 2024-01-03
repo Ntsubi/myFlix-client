@@ -3,8 +3,9 @@ import { HeartFill } from "react-bootstrap-icons";
 
 const FavIcon = ({ MovieID, setUser }) => {
 
-  const [active, setActive] = useState(false);
   let user = JSON.parse(localStorage.getItem('user'));
+  const defaultActive = user.FavoriteMovies.includes(MovieID)
+  const [active, setActive] = useState(defaultActive);
   const token = localStorage.getItem('token');
 
   const handleFavorites = () => {
@@ -21,18 +22,18 @@ const FavIcon = ({ MovieID, setUser }) => {
           body: JSON.stringify({})
         })
         .then((response) => {
-          if (response.ok) {
-            alert('Added to favorites');
-            setActive(!active);
-            user = JSON.parse(localStorage.getItem('user'));
-            user.FavoriteMovies.push(MovieID);
-            localStorage.setItem('user', JSON.stringify(user));
-          } else {
-            alert('Something went wrong')
-          }
+          return response.json()
+        })
+        .then((response) => {
+          localStorage.setItem("user", JSON.stringify(response));
+          setUser(response);
+          setActive(true);
+          console.log(response);
+          alert('Added to favorites')
         })
         .catch((err) => {
           console.error(err);
+          alert('Something went wrong')
         });
     } else {
       fetch(`https://render-movie-api.onrender.com/users/${user.Username}/movies/${MovieID} `,
@@ -45,16 +46,25 @@ const FavIcon = ({ MovieID, setUser }) => {
           body: JSON.stringify({})
         })
         .then((response) => {
-          if (response.ok) {
-            alert('Removed from favorites');
-            setActive(false);
-            user.FavoriteMovies.filter(id => id !== MovieID);
-            localStorage.setItem('user', JSON.stringify(user));
-            setUser(user);
-          } else {
-            alert('Something went wrong');
-          }
-        });
+          return response.json()
+        })
+        .then((response) => {
+          localStorage.setItem('user', JSON.stringify(response));
+          setActive(false);
+          setUser(response);
+          console.log(response);
+          alert('Removed from favorites');
+        })
+        .catch((err) => {
+          console.error(err);
+          alert('Something went wrong')
+        })
+      // if (response.ok) {
+      //   alert('Removed from favorites');
+      //   setActive(false);
+      //   user.FavoriteMovies.filter(id => id !== MovieID);
+      //   localStorage.setItem('user', JSON.stringify(user));
+      //   setUser(user);
     }
   };
 
