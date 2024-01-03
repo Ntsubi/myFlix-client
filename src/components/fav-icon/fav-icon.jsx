@@ -59,12 +59,6 @@ const FavIcon = ({ MovieID, setUser }) => {
           console.error(err);
           alert('Something went wrong')
         })
-      // if (response.ok) {
-      //   alert('Removed from favorites');
-      //   setActive(false);
-      //   user.FavoriteMovies.filter(id => id !== MovieID);
-      //   localStorage.setItem('user', JSON.stringify(user));
-      //   setUser(user);
     }
   };
 
