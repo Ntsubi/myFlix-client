@@ -16,7 +16,6 @@ const ProfileView = ({ user, token, setUser, movies }) => {
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
   useEffect(() => {
-    console.log(movies)
     if (movies) {
       setFavoriteMovies(movies.filter(m => user.FavoriteMovies.includes(m._id)));
     }
