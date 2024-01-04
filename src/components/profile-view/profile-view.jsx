@@ -1,6 +1,4 @@
 import { React, useEffect, useState } from "react";
-import MovieCard from "../movie-card/movie-card";
-import { Link } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -22,7 +20,7 @@ const ProfileView = ({ user, token, setUser, movies }) => {
     if (movies) {
       setFavoriteMovies(movies.filter(m => user.FavoriteMovies.includes(m._id)));
     }
-  }, [movies])
+  }, [movies, user]);
 
   const handleUpdate = (event) => {
     event.preventDefault();
