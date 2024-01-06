@@ -32,10 +32,7 @@ const SignupView = () => {
       body: JSON.stringify(data)
     })
       .then((response) => {
-        if (!response.ok) {
-          res.status(400).send('Username and/or email may already exist.');
-        }
-        else if (response.ok) {
+        if (response.ok) {
           alert('Signup successful');
           window.location.reload();
         } else {

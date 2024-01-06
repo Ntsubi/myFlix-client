@@ -1,45 +1,50 @@
 import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
-const MovieView = ({ movie, onBackClick }) => {
+const MovieView = ({ movies }) => {
+  const { movieId } = useParams();
+  const movie = movies.find((m) => m._id === movieId);
+
   return (
     <div>
       <div>
-        <img src={movie.ImageURL} />
+        <img src={movie.ImageURL} className="W-50" />
       </div>
       <div>
-        <span>Title: </span>
-        <span>{movie.Title}</span>
+        <h1 className="text-uppercase">{movie.Title}</h1>
       </div>
       <div>
-        <span>Description: </span>
-        <span>{movie.Description}</span>
+        <p>{movie.Description}</p>
       </div>
       <div>
-        <span>Genre: </span>
+        <span><strong>Genre: </strong></span>
         <span>{movie.Genre.Name}</span>
       </div>
       <div>
-        <span>Director: </span>
+        <span><strong>Director: </strong></span>
         <span>{movie.Director.Name}</span>
       </div>
       <div>
-        <span>Director's Bio: </span>
+        <span><strong>Director's Bio: </strong></span>
         <span>{movie.Director.Bio}</span>
       </div>
       <div>
-        <span>Runtime: </span>
+        <span><strong>Runtime: </strong></span>
         <span>{movie.Runtime}</span>
       </div>
       <div>
-        <span>Release Year: </span>
+        <span><strong>Release Year: </strong></span>
         <span>{movie.ReleaseYear} </span>
       </div>
       <div>
-        <span>Featured: </span>
+        <span><strong>Featured: </strong></span>
         <span>{movie.Featured ? "Yes" : "No"}</span>
       </div>
-      <Button variant="primary" onClick={onBackClick}>Back</Button>
+      <Link to={`/`}>
+        <Button variant="primary">Back</Button>
+      </Link>
     </div>
   );
 };
@@ -63,7 +68,6 @@ MovieView.propTypes = {
     ReleaseYear: PropTypes.number,
     Featured: PropTypes.bool
   }).isRequired,
-  onBackClick: PropTypes.func.isRequired
 };
 
 export default MovieView;
