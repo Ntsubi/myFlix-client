@@ -13,35 +13,33 @@ const MovieView = ({ movies }) => {
         <img src={movie.ImageURL} className="W-50" />
       </div>
       <div>
-        <span>Title: </span>
-        <span>{movie.Title}</span>
+        <h1 className="text-uppercase">{movie.Title}</h1>
       </div>
       <div>
-        <span>Description: </span>
-        <span>{movie.Description}</span>
+        <p>{movie.Description}</p>
       </div>
       <div>
-        <span>Genre: </span>
+        <span><strong>Genre: </strong></span>
         <span>{movie.Genre.Name}</span>
       </div>
       <div>
-        <span>Director: </span>
+        <span><strong>Director: </strong></span>
         <span>{movie.Director.Name}</span>
       </div>
       <div>
-        <span>Director's Bio: </span>
+        <span><strong>Director's Bio: </strong></span>
         <span>{movie.Director.Bio}</span>
       </div>
       <div>
-        <span>Runtime: </span>
+        <span><strong>Runtime: </strong></span>
         <span>{movie.Runtime}</span>
       </div>
       <div>
-        <span>Release Year: </span>
+        <span><strong>Release Year: </strong></span>
         <span>{movie.ReleaseYear} </span>
       </div>
       <div>
-        <span>Featured: </span>
+        <span><strong>Featured: </strong></span>
         <span>{movie.Featured ? "Yes" : "No"}</span>
       </div>
       <Link to={`/`}>
