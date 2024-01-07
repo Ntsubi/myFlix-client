@@ -16,6 +16,7 @@ const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     //This ensures nothing is fetched when no token is present
@@ -59,11 +60,18 @@ const MainView = () => {
   const updatedUser = user => {
     setUser(user)
     localStorage.setItem("user", JSON.stringify(user));
-  }
+  };
+
+  const filteredMovies = movies.filter(movie => {
+    if (searchQuery) {
+      return movie.Title.toLowerCase().includes(searchQuery.toLowerCase());
+    }
+  });
 
   return (
     <BrowserRouter>
-      <NavBar user={user} onLoggedOut={() => { setUser(null); setToken(null); localStorage.clear(); }} />
+      <NavBar user={user} onLoggedOut={() => { setUser(null); setToken(null); localStorage.clear(); }}
+        movies={movies} searchQuery={searchQuery} setSearchQuery={setSearchQuery} filteredMovies={filteredMovies} />
       <Row className="justify-content-md-center">
         <Routes>
           <Route
@@ -122,6 +130,19 @@ const MainView = () => {
                   <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
                   <Col>The list is empty!</Col>
+                ) : searchQuery ? (
+                  <>
+                    <Row>
+                      {filteredMovies.map((movie) => (
+                        <Col className="mb-4" key={movie._id} md={3} >
+                          <MovieCard
+                            user={user}
+                            setUser={setUser}
+                            movie={movie} />
+                        </Col>
+                      ))}
+                    </Row>
+                  </>
                 ) : (
                   <>
                     {movies.map((movie) => (

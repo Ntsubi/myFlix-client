@@ -2,8 +2,16 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
-const NavBar = ({ user, onLoggedOut }) => {
+const NavBar = ({ user, onLoggedOut, searchQuery, setSearchQuery }) => {
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  }
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -20,6 +28,22 @@ const NavBar = ({ user, onLoggedOut }) => {
             )}
             {user && (
               <>
+                <Form className="form-inline">
+                  <Row>
+                    <Col xs="auto">
+                      <Form.Control
+                        type="text"
+                        placeholder="Search"
+                        className=" mr-sm-2"
+                        value={searchQuery}
+                        onChange={handleSearch}
+                      />
+                    </Col>
+                    <Col xs="auto">
+                      <Button type="submit">Submit</Button>
+                    </Col>
+                  </Row>
+                </Form>
                 <Nav.Link as={Link} to="/">Home</Nav.Link>
                 <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
                 <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>

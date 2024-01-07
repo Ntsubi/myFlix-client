@@ -8,7 +8,6 @@ import FavoriteMovies from "./fav-movies";
 import moment from "moment/moment";
 
 const ProfileView = ({ user, token, setUser, movies }) => {
-  console.log(user, movies)
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user.Email);
