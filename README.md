@@ -23,7 +23,7 @@ This project was built using the following tools:
 ### How to run the app
 From the terminal, navigate to the index.html file via Parcel and run the following command:
 
- `parcel src/index.html`
+ `parcel src/index.html` or `npm start`
  
  The server will run on your local drive at localhost:1234.
 
